@@ -68,10 +68,6 @@ router.get('/playlist-builder', async (req, res) => {
 });
 
 
-router.get('/event-promotions', (req, res) => {
-    res.render('pages/Newpages/event-promotions', { page: 'Event Promotions', pageTitle: 'Event Promotions' });
-});
-
 // Endpoint to add a song
 router.post('/addSong', async (req, res) => {
     const newSong = new Track(req.body);

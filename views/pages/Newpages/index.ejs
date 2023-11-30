@@ -95,34 +95,6 @@
     // window.alert("This is an alert from the Window object.");
 </script>
 
-<div class="playlist-builder">
-    <h2>Playlist Builder</h2>
-    <div class="playlist-actions">
-        <button>Add Track</button>
-        <button>Remove Track</button>
-        <button>Clear Playlist</button>
-        <button>Save Playlist</button>
-    </div>
-    <ul class="drag-drop-playlist">
-        <li class="playlist-item">
-            <div class="track-image">
-                <img src="/img/img-1.jfif" alt="Track Image">
-            </div>
-            <div class="track-details">
-                <p>Track 1: Rock Your Body</p>
-            </div>
-        </li>
-        <li class="playlist-item">
-            <div class="track-image">
-                <img src="/img/img-2.jpg" alt="Track Image">
-            </div>
-            <div class="track-details">
-                <p>Track 2: Blinding Lights</p>
-            </div>
-        </li>
-    </ul>
-</div>
-
 <div class="event-promotions">
     <h2>Event Promotions</h2>
     <div class="promotion-actions">
@@ -147,30 +119,6 @@
             // Delete the cookie
             document.cookie = "RED_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
             window.location.href = '/';
-        }
-    // JavaScript Fundamentals
-    const eventTitle = document.getElementById('event-title');
-    eventTitle.textContent = 'Saturday Dance Party';
-    
-    const isSunny = true;
-    const isWarm = true;
-    
-    if (isSunny && isWarm) {  // Using Logical Operators
-        eventTitle.textContent = 'Sunny Warm Party';
-    }
-    else if (isSunny && !isWarm) {
-        eventTitle.textContent = 'Winter Day Party';
-    }
-    else {
-        eventTitle.textContent = 'Party';
-    }
-    
-    for (let i = 0; i < 5; i++) {  // Using a Loop
-        console.log("Upcoming Event #" + i);
-    }
-    
-    function customizeEventTitle(title) {
-        eventTitle.textContent = title;
     }
     
     customizeEventTitle("Special Event");  // Calling a Function
