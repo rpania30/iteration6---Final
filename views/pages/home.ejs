@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+        }
+
+        .banner {
+            background-image: url('https://images.pexels.com/photos/1261578/pexels-photo-1261578.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-btn {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 0.5em 1em;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .login-btn:hover {
+            background-color: #45a049;
+        }
+
+        .join-btn {
+            background-color: rgba(0, 153, 204, 0.8);
+            color: #fff;
+            padding: 1em 2em;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .join-btn:hover {
+            background-color: rgba(0, 123, 158, 0.8);
+            transform: scale(1.05);
+        }
+
+        .learn-more {
+            margin-top: 10px;
+            cursor: pointer;
+            text-decoration: underline;
+            color: #fff;
+            transition: color 0.3s;
+        }
+
+        .learn-more:hover {
+            color: #ddd;
+        }
+
+        .login-btn-group {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .producer-login-btn, .listener-login-btn {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 0.5em 1em;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .producer-login-btn:hover, .listener-login-btn:hover {
+            background-color: #45a049;
+        }
+        
+
+        .content-section, .artists-section, .events-section {
+            background-color: white;
+            padding: 40px;
+            margin: 20px auto;
+            max-width: 800px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .content-section:hover, .artists-section:hover, .events-section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        h2:hover {
+            color: #007bff;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .content-section, .artists-section, .events-section {
+                margin: 20px 10px;
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="banner">
+        <h1>Welcome to our Music Radio Platform</h1>
+        <p>Discover a world of music, radio shows, and events!</p>
+        <a href="/signup" class="join-btn">JOIN NOW</a>
+        <a href="#" class="learn-more">Learn More</a>
+
+        <div class="login-btn-group">
+            <a href="/producer/login" class="producer-login-btn">Producer Login</a>
+            <a href="/listener/login" class="listener-login-btn">Listener Login</a>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Explore Music</h2>
+        <p>Dive into a vast collection of genres, from classical to electronic. Our platform offers a diverse range of music curated just for you.</p>
+    </div>
+
+    <div class="artists-section">
+        <h2>Featured Artists</h2>
+        <p>Discover talented artists making waves in the music industry. Listen to their latest tracks and explore their unique styles.</p>
+    </div>
+
+    <div class="events-section">
+        <h2>Upcoming Events</h2>
+        <p>Stay tuned for exciting events! From live performances to exclusive interviews, we bring you closer to the music you love.</p>
+    </div>
+
+    <script>
+        function getCookie(name) {
+            const cookies = document.cookie.split(';');
+            for (const cookie of cookies) {
+                const [cookieName, cookieValue] = cookie.trim().split('=');
+                if (cookieName === name) {
+                    return cookieValue;
+                }
+            }
+            return null;
+        }
+
+        // Retrieve the 'RED_id' cookie
+        const redId = getCookie('RED_id');
+
+        if (redId) {
+            console.log('RED_id:', redId);
+            window.location.href = './profile';
+            // You can use the 'redId' variable as needed
+        }
+    </script>
+</body>
+
+
+</html>

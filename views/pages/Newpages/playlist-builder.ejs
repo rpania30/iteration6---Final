@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title><%= pageTitle %></title>
+</head>
+<body>
+    <header>
+        <h1><%= page %></h1>
+        <nav>
+            <a href="/producer/" class="nav-button">Home</a>
+            <a href="/producer/playlist-builder" class="nav-button">Playlist Builder</a>
+            <a href="/producer/event-promotions" class="nav-button">Event Promotions</a>
+        </nav>
+        <input type="text" id="search-bar" placeholder="Search...">
+    </header>
+    <main>
+        <h2 class = "songlist-title">SongList Songs</h2>
+        
+        <div class="playlist-actions">
+            <!-- Form for adding new tracks -->
+            <form id="addSongForm" action="/producer/addSong" method="post">
+                <input type="text" id="name" name="name" placeholder="Song Name" required>
+                <input type="text" id="artist" name="artist" placeholder="Artist" required>
+                <input type="text" id="genre" name="genre" placeholder="Genre">
+                <input type="number" id="year" name="year" placeholder="Year">
+                <button type="submit">Add Track</button>
+                <button type="button" onclick="clearPlaylist()">Clear Entire Playlist</button>
+            </form>
+        </div>
+
+        <!-- Displaying playlist tracks with structured layout -->
+        <ul class="drag-drop-playlist" id="playlist">
+            <% songs.forEach(song => { %>
+                <li id="song-<%= song._id %>" class="song-item">
+                    <div class="song-details">
+                        <div class="song-name"><strong>Name:</strong> <%= song.name %></div>
+                        <div class="song-artist"><strong>Artist:</strong> <%= song.artist %></div>
+                        <div class="song-genre"><strong>Genre:</strong> <%= song.genre %></div>
+                        <div class="song-year"><strong>Year:</strong> <%= song.year %></div>
+                    </div>
+                    <div class="song-actions">
+                        <button onclick="deleteSong('<%= song._id %>')" class="delete-button">Delete</button>
+                    </div>
+                </li>
+            <% }); %>
+        </ul>
+
+        <!-- Displaying Songs from SongList -->
+        <ul>
+            <% songlist.forEach(song => { %>
+                <li>
+                    <% if (song.title && song.artist) { %>
+                        <%= song.title %> - <%= song.artist %>
+                    <% } %>
+                    <% if (song.genre) { %>
+                        <div><strong>Genre:</strong> <%= song.genre %></div>
+                    <% } %>
+                    <% if (song.year) { %>
+                        <div><strong>Year:</strong> <%= song.year %></div>
+                    <% } %>
+                    <% if (song.featuredArtist) { %>
+                        <div><strong>Featured Artist:</strong> <%= song.featuredArtist %></div>
+                    <% } %>
+                </li>
+            <% }); %>            
+        </ul>         
+    </main>
+
+    <script>
+        function deleteSong(songId) {
+            fetch('/producer/deleteSong', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id: songId }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('song-' + songId).remove();
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function clearPlaylist() {
+            // Clear displayed songs from the list on the webpage
+            const playlist = document.getElementById('playlist');
+            playlist.innerHTML = '';
+
+            // Send a request to the server to clear the playlist from the database
+            fetch('/producer/clearPlaylist', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => console.log(data.message))
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>

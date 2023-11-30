@@ -1,0 +1,44 @@
+{
+    "djs": [
+        {
+            "name": "DJ Harmony",
+            "songs": [
+                "Euphoria Vibes",
+                "Dancefloor Dreams",
+                "Sunset Groove"
+            ]
+        },
+        {
+            "name": "DJ Pulse",
+            "songs": [
+                "Electro Fusion",
+                "Techno Bliss",
+                "Digital Beats"
+            ]
+        },
+        {
+            "name": "DJ Serenity",
+            "songs": [
+                "Chill Waves",
+                "Tranquil Melodies",
+                "Ambient Bliss"
+            ]
+        },
+        {
+            "name": "DJ Eclipse",
+            "songs": [
+                "Dark Energy",
+                "Cosmic Resonance",
+                "Galactic Rhythms"
+            ]
+        },
+        {
+            "name": "DJ Radiance",
+            "songs": [
+                "Luminous Beats",
+                "Solar Flare",
+                "Radiant Grooves"
+            ]
+        }
+    ]
+}
